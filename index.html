@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    
+    
+    <svg  viewBox="0 0 248 248.7" >
+        <filter id="displacementFilter">
+            <feTurbulence type="turbulence" baseFrequency="0.04"
+            numOctaves="2" result="turbulence"/> 
+            <feDisplacementMap in2="turbulence" in="SourceGraphic"
+            scale="50" xChannelSelector="R" yChannelSelector="G"/>   
+        </filter>
+   
+    <path id="logo" style="filter: url(#displacementFilter);transform-origin:center;" fill="#00AE7B" d="M124,86.421c21.006,0,38.095,17.089,38.095,38.095S145.006,162.612,124,162.612
+    s-38.095-17.089-38.095-38.095S102.994,86.421,124,86.421 M124,57.85c-36.819,0-66.667,29.848-66.667,66.667
+    S87.181,191.183,124,191.183s66.667-29.848,66.667-66.667S160.819,57.85,124,57.85L124,57.85z"/>
+    </svg>
+    
+    </svg>
+
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"></script>>
+    
+    <script>
+      let tl = anime.timeline({
+          duration: 4000,
+          easing: 'easeInOutQuart'
+      })
+
+      tl.add({
+          targets: 'svg',
+          keyframes: [
+              {scale: .3, rotate: '0deg'},
+              {scale: .5, rotate: '360deg' },
+          ],
+          duration: 3000
+      })
+
+      tl.add({
+          targets: ["#logo", 'feTurbulence', 'feDisplacementMap'],
+          baseFrequency: 0,
+          numOctaves: 0,
+          scale: 1,
+          rotate: '360deg',
+          fill: '#fff',
+          stroke: '#fff',
+          strokeWidth: 3,
+          strokeDasArray: '20,10,5,4,30,10'
+      }, "-=4000")
+
+      tl.add({
+          targets: 'svg',
+          scale: 0,
+          duration: 500
+      })
+
+
+    </script>
+    
+</body>
+</html>
